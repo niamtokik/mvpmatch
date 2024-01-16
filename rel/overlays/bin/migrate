@@ -1,0 +1,14 @@
+#!/usr/bin/env sh
+cd -P -- "$(dirname -- "$0")"
+exec ./mvpmatch eval Mvpmatch.Release.migrate
+
+
+
+
+
+
+
+
+
+
+

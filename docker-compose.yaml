@@ -1,0 +1,16 @@
+services:
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_USER: mvpmatch
+      POSTGRES_DB: mvpmatch
+      POSTGRES_PASSWORD: mvpmatch
+  mvpmatch:
+    build: .
+    environment:
+      SECRET_KEY_BASE: so10KjHEFMfXQ9hcYuZyHYPO0RQRHLFY+CZWYW/dMWJRg7Jb4HIki/xR40YYNIq6 kiKouRTx7xViURdh0Z2d9A==
+      DATABASE_URL: ecto://mvpmatch:mvpmatch@postgres/mvpmatch
+    ports:
+      - "4000:4000"
+    depends_on:
+      - postgres
