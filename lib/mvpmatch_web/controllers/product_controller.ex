@@ -2,7 +2,6 @@ defmodule MvpmatchWeb.ProductController do
   @moduledoc ~S"""
   """
   use MvpmatchWeb, :controller
-  alias Mvpmatch.Accounts
   alias Mvpmatch.Accounts.User
   alias Mvpmatch.Roles
   alias Mvpmatch.Roles.Buyer
@@ -34,8 +33,6 @@ defmodule MvpmatchWeb.ProductController do
     end
   end
 
-  @doc ~S"""
-  """
   defp create_seller(conn, user, params) do
     with {:ok, seller = %Seller{}} <- Roles.create_seller(user),
          {:ok, product} <- Roles.create_product(seller, params) do
@@ -102,8 +99,6 @@ defmodule MvpmatchWeb.ProductController do
     end
   end
 
-  @doc ~S"""
-  """
   defp product_to_json(%Product{} = product) do
     %{
       id: product.id,

@@ -1,6 +1,5 @@
 defmodule MvpmatchWeb.DepositController do
   use MvpmatchWeb, :controller
-  alias Mvpmatch.Accounts
   alias Mvpmatch.Accounts.User
   alias Mvpmatch.Roles
   alias Mvpmatch.Roles.Buyer

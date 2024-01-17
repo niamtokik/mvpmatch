@@ -20,8 +20,12 @@ defmodule MvpmatchWeb.Router do
   end
 
   scope "/", MvpmatchWeb do
-    pipe_through :api
+    pipe_through :browser
     get "/", PageController, :home
+  end
+
+  scope "/", MvpmatchWeb do
+    pipe_through :api
     post "/user", UserController, :create
   end
 

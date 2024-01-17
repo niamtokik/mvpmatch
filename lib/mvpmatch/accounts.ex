@@ -2,11 +2,8 @@ defmodule Mvpmatch.Accounts do
   @moduledoc ~S"""
   Interface to manage accounts (users).
   """
-  import Ecto.Changeset, only: [change: 2]
-  import Ecto.Query
   alias Mvpmatch.Repo
   alias Mvpmatch.Accounts.User
-  alias Mvpmatch.Accounts.Deposit
 
   @doc ~S"""
   Creates new user using username and password.

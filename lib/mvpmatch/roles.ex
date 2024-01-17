@@ -4,7 +4,6 @@ defmodule Mvpmatch.Roles do
   import Ecto.Query
   import Mvpmatch.Repo
   alias Mvpmatch.Repo
-  alias Mvpmatch.Accounts
   alias Mvpmatch.Accounts.User
   alias Mvpmatch.Roles.Buyer
   alias Mvpmatch.Roles.Seller

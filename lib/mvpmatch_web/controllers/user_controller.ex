@@ -32,7 +32,7 @@ defmodule MvpmatchWeb.UserController do
               buyer: Roles.is_buyer?(user),
               seller: Roles.is_seller?(user)
              })
-      elsewise ->
+      _elsewise ->
         json(conn, %{})
     end
   end

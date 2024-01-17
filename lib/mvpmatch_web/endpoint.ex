@@ -32,6 +32,9 @@ defmodule MvpmatchWeb.Endpoint do
     plug Phoenix.Ecto.CheckRepoStatus, otp_app: :mvpmatch
   end
 
+  plug CORSPlug,
+    origin: [System.get_env("PHOENIX_CORS", "*")]
+
   plug Plug.RequestId
   plug Plug.Telemetry, event_prefix: [:phoenix, :endpoint]
 
@@ -43,5 +46,6 @@ defmodule MvpmatchWeb.Endpoint do
   plug Plug.MethodOverride
   plug Plug.Head
   plug Plug.Session, @session_options
+
   plug MvpmatchWeb.Router
 end
