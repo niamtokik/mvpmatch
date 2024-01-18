@@ -65,6 +65,9 @@ if config_env() == :prod do
     ],
     secret_key_base: secret_key_base
 
+  # jwt (joken) configuration
+  config :joken, default_signer: System.fetch_env!("PHOENIX_JWT_KEY")
+
   # ## SSL Support
   #
   # To get SSL working, you will need to add the `https` key

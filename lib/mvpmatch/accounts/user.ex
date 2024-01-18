@@ -17,5 +17,6 @@ defmodule Mvpmatch.Accounts.User do
     |> cast(params, [:username, :password])
     |> validate_required([:username, :password])
     |> unique_constraint(:username)
+    |> validate_format(:username, ~r/^\w+$/)
   end
 end

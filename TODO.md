@@ -6,7 +6,7 @@
 
 - [x] basic auth support
 
-- [ ] jwt support
+- [x] jwt support
 
 ## Accounts
 
@@ -18,7 +18,7 @@
 
 - [ ] an authenticated user can delete his account
 
-- [ ] an username must be only characters and numbers
+- [x] an username must be only characters and numbers
 
 ## Buyers
 
@@ -67,7 +67,21 @@
 
 - [ ] a product must have an UUID
 
-## Developer
+## Testing
+
+- [ ] Test basic auth authentication method
+
+- [ ] Test jwt authentication method
+
+- [ ] Test accounts end-points
+
+- [ ] Test buyers end-points
+
+- [ ] Test sellers end-points
+
+- [ ] Test products end-points
+
+## Developer Toolbox
 
 - [x] add `asdf` `.tool-versions` 
 
