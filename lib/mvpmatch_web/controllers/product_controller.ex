@@ -2,6 +2,7 @@ defmodule MvpmatchWeb.ProductController do
   @moduledoc ~S"""
   """
   use MvpmatchWeb, :controller
+  alias Ecto.Changeset
   alias Mvpmatch.Accounts.User
   alias Mvpmatch.Roles
   alias Mvpmatch.Roles.Buyer
@@ -26,6 +27,11 @@ defmodule MvpmatchWeb.ProductController do
     else
       user = %User{seller: nil} ->
         create_seller(conn, user, params)
+      {:error, %Changeset{errors: errors}} ->
+        reason = Enum.map(errors, fn {x, _} -> x end)
+        conn
+        |> put_status(400)
+        |> json(%{error: "bad request", reason: reason})
       _ ->
         conn
         |> put_status(500)

@@ -51,7 +51,7 @@ defmodule MvpmatchWeb.UserController do
     with user = %User{} <- Accounts.check_password(username, password),
       {:ok, jwt, _} <- Token.create_user_session(user) do
       conn
-      |> put_resp_cookie("_mvpmatch_session", jwt, http_only: true)
+      |> put_resp_cookie("_mvpmatch_session", jwt, http_only: true, encrypt: true, signed: true)
       |> json(%{ logged: true })
     end
   end

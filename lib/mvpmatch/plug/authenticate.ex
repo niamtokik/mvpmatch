@@ -6,7 +6,6 @@ defmodule Mvpmatch.Plug.Authenticate do
   """
 
   import Plug.Conn
-  alias Plug.Conn.Cookies
   alias Phoenix.Controller
   alias Mvpmatch.Accounts
   alias Mvpmatch.Accounts.User
@@ -16,10 +15,10 @@ defmodule Mvpmatch.Plug.Authenticate do
 
   def call(conn, _opts) do
     cond do
-      basic_auth?(conn) ->
-        basic_auth_authenticate(conn)
       jwt_auth?(conn) ->
         jwt_auth_authenticate(conn)
+      basic_auth?(conn) ->
+        basic_auth_authenticate(conn)
       true ->
         unauthorized(conn)
     end
@@ -45,9 +44,9 @@ defmodule Mvpmatch.Plug.Authenticate do
   # the field "session" must be present in the jwt session, it will
   # contains user session information.
   defp jwt_auth_cookie_extractor(conn) do
-    with [cookie|_] <- get_req_header(conn, "cookie"),
-         %{ "_mvpmatch_session" => encrypted } <- Cookies.decode(cookie),
-         {:ok, %{"session" => session}} <- Token.verify_and_validate(encrypted) do
+    with %{cookies: cookies} <- fetch_cookies(conn, encrypted: "_mvpmatch_session"),
+         {:ok, jwt} <- Map.fetch(cookies, "_mvpmatch_session"),
+         {:ok, %{"session" => session}} <- Token.verify_and_validate(jwt) do
       {:ok, session}
     else
       _ -> {:error, "jwt session error"}
