@@ -122,7 +122,7 @@ defmodule MvpmatchWeb.ProductController do
          user = %User{buyer: %Buyer{}} <- conn.assigns[:user],
          {:ok, result} <- Roles.buy_product(user.buyer.id, product_id, amount) do
       json(conn, %{
-            deposity: result.buyer.deposit,
+            deposit: result.buyer.deposit,
             product_amount: result.product_amount,
             product: product_to_json(result.product),
       })
